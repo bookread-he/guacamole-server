@@ -25,6 +25,7 @@
 #include <guacamole/stream.h>
 #include <guacamole/user.h>
 #include <libssh2.h>
+#include <libssh2_sftp.h>
 
 /**
  * The current streaming state of an arbitrary JSON object, consisting of

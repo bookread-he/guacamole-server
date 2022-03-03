@@ -30,6 +30,7 @@
 #include <guacamole/stream.h>
 #include <guacamole/user.h>
 #include <libssh2.h>
+#include <libssh2_sftp.h>
 
 void guac_common_json_flush(guac_user* user, guac_stream* stream,
         guac_common_json_state* json_state) {
