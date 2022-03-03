@@ -661,9 +661,6 @@ static int guac_common_ssh_sftp_ls_ack_handler(guac_user* user,
             mimetype = "application/octet-stream";
 
 
- sprintf(sftp_attributes, "{\"mimetype\":\"%s\",\"filesize\":%llu,\"permissions\":%lu}",
-                                mimetype, attributes.filesize, attributes.permissions);
-
         //adding file size and permission
 //        char sftp_attributes[150];
 //        guac_common_sftp_attributes_transfer_json(sftp_attributes, mimetype, attributes);
