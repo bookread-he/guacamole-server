@@ -91,13 +91,14 @@ int guac_rdp_ls_ack_handler(guac_user* user, guac_stream* stream,
         else
             mimetype = "application/octet-stream";
 
-        //adding file size and permission
-        char* sftp_attributes;
-        guac_common_sftp_attributes_transfer_json(sftp_attributes, mimetype, attributes);
+        //adding file size
+        char rdp_ls_attributes[150];
+        sprintf(rdp_ls_attributes, "{\"mime\":\"%s\",\"size\":%lu}",
+                               mimetype, file->size);
 
         /* Write entry */
         blob_written |= guac_common_json_write_property(user, stream,
-                &ls_status->json_state, absolute_path, sftp_attributes);
+                &ls_status->json_state, absolute_path, rdp_ls_attributes);
 
         guac_rdp_fs_close(ls_status->fs, file_id);
 
