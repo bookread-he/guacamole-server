@@ -29,6 +29,7 @@
 #include <guacamole/socket.h>
 #include <guacamole/stream.h>
 #include <guacamole/user.h>
+#include <libssh2.h>
 
 void guac_common_json_flush(guac_user* user, guac_stream* stream,
         guac_common_json_state* json_state) {
@@ -175,6 +176,12 @@ int guac_common_json_end_object(guac_user* user, guac_stream* stream,
 
     /* Write final brace of JSON object */
     return guac_common_json_write(user, stream, json_state, "}", 1);
+
+
+void guac_common_sftp_attributes_transfer_json(char* sftp_attributes, char* mimetype, LIBSSH2_SFTP_ATTRIBUTES* attributes){
+         sprintf(sftp_attributes, "{\"mimetype\":\"%s\",\"filesize\":%llu,\"permissions\":%lu}",
+                                mimetype, attributes.filesize, attributes.permissions);
+    }
 
 }
 
