@@ -31,6 +31,7 @@
 #include <guacamole/user.h>
 #include <libssh2.h>
 #include <libssh2_sftp.h>
+#include <stdio.h>
 
 void guac_common_json_flush(guac_user* user, guac_stream* stream,
         guac_common_json_state* json_state) {
@@ -181,7 +182,7 @@ int guac_common_json_end_object(guac_user* user, guac_stream* stream,
 
 void guac_common_sftp_attributes_transfer_json(char* sftp_attributes, char* mimetype, LIBSSH2_SFTP_ATTRIBUTES* attributes){
          sprintf(sftp_attributes, "{\"mimetype\":\"%s\",\"filesize\":%llu,\"permissions\":%lu}",
-                                mimetype, attributes.filesize, attributes.permissions);
+                                mimetype, attributes->filesize, attributes->permissions);
     }
 
 }
