@@ -659,13 +659,26 @@ static int guac_common_ssh_sftp_ls_ack_handler(guac_user* user,
         else
             mimetype = "application/octet-stream";
 
+
+ sprintf(sftp_attributes, "{\"mimetype\":\"%s\",\"filesize\":%llu,\"permissions\":%lu}",
+                                mimetype, attributes.filesize, attributes.permissions);
+
         //adding file size and permission
-        char sftp_attributes[150];
-        guac_common_sftp_attributes_transfer_json(sftp_attributes, mimetype, attributes);
+//        char sftp_attributes[150];
+//        guac_common_sftp_attributes_transfer_json(sftp_attributes, mimetype, attributes);
+
+        /* adding file size and permission */
+        cJSON*  sftp_attributes_obj;
+        char*  sftp_attributes_json;
+        sftp_attributes_obj = cJSON_CreateObject();
+        cJSON_AddStringToObject(sftp_attributes_obj, "mimetype", mimetype);
+        cJSON_AddNumberToObject(sftp_attributes_obj, "filesize", attributes.filesize);
+        cJSON_AddNumberToObject(sftp_attributes_obj, "permissions", attributes.permissions);
+        sftp_attributes_json = cJSON_Print(sftp_attributes_obj);
 
         /* Write entry, waiting for next ack if a blob is written */
         if (guac_common_json_write_property(user, stream,
-                    &list_state->json_state, absolute_path, sftp_attributes))
+                    &list_state->json_state, absolute_path, sftp_attributes_json))
             break;
 
     }

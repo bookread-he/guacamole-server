@@ -91,14 +91,23 @@ int guac_rdp_ls_ack_handler(guac_user* user, guac_stream* stream,
         else
             mimetype = "application/octet-stream";
 
+        /*
         //adding file size
         char rdp_ls_attributes[150];
         sprintf(rdp_ls_attributes, "{\"mime\":\"%s\",\"size\":%lu}",
-                               mimetype, file->size);
+                               mimetype, file->size);*/
+
+        /* adding file size */
+        cJSON*  rdp_ls_attributes_obj;
+        char*  rdp_ls_attributes_json;
+        rdp_ls_attributes_obj = cJSON_CreateObject();
+        cJSON_AddStringToObject(rdp_ls_attributes_obj, "mimetype", mimetype);
+        cJSON_AddNumberToObject(rdp_ls_attributes_obj, "filesize", attributes.filesize);
+        rdp_ls_attributes_json = cJSON_Print(rdp_ls_attributes_obj);
 
         /* Write entry */
         blob_written |= guac_common_json_write_property(user, stream,
-                &ls_status->json_state, absolute_path, rdp_ls_attributes);
+                &ls_status->json_state, absolute_path, rdp_ls_attributes_json);
 
         guac_rdp_fs_close(ls_status->fs, file_id);
 
