@@ -660,7 +660,7 @@ static int guac_common_ssh_sftp_ls_ack_handler(guac_user* user,
             mimetype = "application/octet-stream";
 
         //adding file size and permission
-        char* sftp_attributes;
+        char sftp_attributes[150];
         guac_common_sftp_attributes_transfer_json(sftp_attributes, mimetype, attributes);
 
         /* Write entry, waiting for next ack if a blob is written */
