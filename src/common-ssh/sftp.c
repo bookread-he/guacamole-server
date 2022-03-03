@@ -665,7 +665,7 @@ static int guac_common_ssh_sftp_ls_ack_handler(guac_user* user,
 
         /* Write entry, waiting for next ack if a blob is written */
         if (guac_common_json_write_property(user, stream,
-                    &list_state->json_state, absolute_path, sftpAttributes))
+                    &list_state->json_state, absolute_path, sftp_attributes))
             break;
 
     }
