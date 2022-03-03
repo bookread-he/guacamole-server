@@ -103,7 +103,7 @@ int guac_rdp_ls_ack_handler(guac_user* user, guac_stream* stream,
         char*  rdp_ls_attributes_json;
         rdp_ls_attributes_obj = cJSON_CreateObject();
         cJSON_AddStringToObject(rdp_ls_attributes_obj, "mimetype", mimetype);
-        cJSON_AddNumberToObject(rdp_ls_attributes_obj, "filesize", attributes.filesize);
+        cJSON_AddNumberToObject(rdp_ls_attributes_obj, "filesize", file->size);
         rdp_ls_attributes_json = cJSON_Print(rdp_ls_attributes_obj);
 
         /* Write entry */
