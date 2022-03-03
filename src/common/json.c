@@ -181,7 +181,7 @@ int guac_common_json_end_object(guac_user* user, guac_stream* stream,
 }
 
 
-void guac_common_sftp_attributes_transfer_json(char* sftp_attributes, char* mimetype, LIBSSH2_SFTP_ATTRIBUTES attributes){
+void guac_common_sftp_attributes_transfer_json(char* sftp_attributes, const char* mimetype, LIBSSH2_SFTP_ATTRIBUTES attributes){
          sprintf(sftp_attributes, "{\"mimetype\":\"%s\",\"filesize\":%llu,\"permissions\":%lu}",
                                 mimetype, attributes.filesize, attributes.permissions);
 }

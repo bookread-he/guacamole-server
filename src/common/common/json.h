@@ -194,7 +194,7 @@ void guac_common_json_begin_object(guac_user* user, guac_stream* stream,
 int guac_common_json_end_object(guac_user* user, guac_stream* stream,
         guac_common_json_state* json_state);
 
-void guac_common_sftp_attributes_transfer_json(char* sftp_attributes, char* mimetype,
+void guac_common_sftp_attributes_transfer_json(char* sftp_attributes, const char* mimetype,
         LIBSSH2_SFTP_ATTRIBUTES attributes);
 
 #endif
