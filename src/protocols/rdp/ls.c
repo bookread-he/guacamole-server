@@ -19,6 +19,7 @@
 
 #include "fs.h"
 #include "ls.h"
+#include "common/cJSON.h"
 
 #include <guacamole/client.h>
 #include <guacamole/protocol.h>
