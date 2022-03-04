@@ -22,6 +22,7 @@
 
 #include "common/json.h"
 #include "ssh.h"
+#include "common/cJSON.h"
 
 #include <guacamole/object.h>
 #include <guacamole/user.h>

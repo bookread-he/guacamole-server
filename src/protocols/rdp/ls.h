@@ -22,6 +22,7 @@
 
 #include "common/json.h"
 #include "fs.h"
+#include "common/cJSON.h"
 
 #include <guacamole/protocol.h>
 #include <guacamole/stream.h>

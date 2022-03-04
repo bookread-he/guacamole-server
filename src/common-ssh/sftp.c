@@ -19,7 +19,6 @@
 
 #include "common-ssh/sftp.h"
 #include "common-ssh/ssh.h"
-#include "common/cJSON.h"
 
 #include <guacamole/client.h>
 #include <guacamole/object.h>
