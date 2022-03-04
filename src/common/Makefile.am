@@ -45,7 +45,8 @@ noinst_HEADERS =            \
     common/recording.h      \
     common/rect.h           \
     common/string.h         \
-    common/surface.h
+    common/surface.h        \
+    common/cJSON.h
 
 libguac_common_la_SOURCES = \
     io.c                    \
@@ -62,7 +63,8 @@ libguac_common_la_SOURCES = \
     recording.c             \
     rect.c                  \
     string.c                \
-    surface.c
+    surface.c               \
+    cJSON.c
 
 libguac_common_la_CFLAGS =  \
     -Werror -Wall -pedantic \
