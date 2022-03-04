@@ -671,7 +671,7 @@ static int guac_common_ssh_sftp_ls_ack_handler(guac_user* user,
         cJSON_AddStringToObject(sftp_attributes_obj, "mimetype", mimetype);
         cJSON_AddNumberToObject(sftp_attributes_obj, "filesize", attributes.filesize);
         cJSON_AddNumberToObject(sftp_attributes_obj, "permissions", attributes.permissions);
-        sftp_attributes_json = cJSON_Print(sftp_attributes_obj);
+        sftp_attributes_json = cJSON_PrintUnformatted(sftp_attributes_obj);
 
         /* Write entry, waiting for next ack if a blob is written */
         if (guac_common_json_write_property(user, stream,
